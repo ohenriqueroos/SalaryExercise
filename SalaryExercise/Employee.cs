@@ -1,4 +1,6 @@
-﻿namespace SalaryExercise
+﻿using System.Globalization;
+
+namespace SalaryExercise
 {
     class Employee
     {
@@ -11,9 +13,16 @@
             return GrossSalary - Tax;
         }
 
-        public double IncreaseSalary(double percentage)
+        public void IncreaseSalary(double percentage)
         {
-            return (GrossSalary * (percentage / 100.00) + GrossSalary) - Tax;
+            GrossSalary += (GrossSalary * percentage / 100.0);
+        }
+
+        public override string ToString()
+        {
+            return Name
+                + ", R$ "
+                + CalculateNetSalary().ToString("F2", CultureInfo.InvariantCulture);
         }
     }
 }

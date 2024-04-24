@@ -14,12 +14,14 @@ namespace SalaryExercise
             employee.GrossSalary = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             Console.Write("Imposto: ");
             employee.Tax = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            employee.CalculateNetSalary();
 
-            Console.WriteLine("Funcionário: {0}, $ {1}", employee.Name, employee.CalculateNetSalary().ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("Funcionário: " + employee);
 
             Console.Write("Digite a porcentagem para aumentar o salário: ");
             double currentTax = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            Console.WriteLine("Dados atualizados: {0}, $ {1}", employee.Name, employee.IncreaseSalary(currentTax).ToString("F2", CultureInfo.InvariantCulture));
+            employee.IncreaseSalary(currentTax);
+            Console.WriteLine("Dados atualizados: " + employee);
         }
     }
 }
